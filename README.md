@@ -1,5 +1,3 @@
-[![Dependency Status](https://david-dm.org/prismicio/nextjs-blog.svg)](https://david-dm.org/prismicio/nextjs-blog)
-
 # Prismic Next.js Blog Site Example
 This project is an implementation of the Prismic blog site demo using Next.js. Built up from the starter project, it's meant to provide you with an idea of how to build your own sites using the Prismic features. Read our [user guide](https://user-guides.prismic.io/examples/next-js-samples/sample-blog-with-api-based-cms-in-nextjs) if you need guidance on how to use this repository.
 
