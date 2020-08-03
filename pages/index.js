@@ -5,7 +5,7 @@ import { RichText } from "prismic-reactjs";
 
 // Project components & functions
 import DefaultLayout from "layouts";
-import { Header, PostList, SetupRepo } from "components/home";
+import { Header, PostList } from "components/home";
 import { Client } from "utils/prismicHelpers";
 
 /**
@@ -27,23 +27,15 @@ const Home = ({ doc, posts }) => {
       </DefaultLayout>
     );
   }
-
-  // Message when repository has not been setup yet
-  return <SetupRepo />;
 };
 
-export async function getStaticProps({ preview = null, previewData = {} }) {
-
-  const { ref } = previewData
-
+export async function getStaticProps() {
   const client = Client()
-
-  const doc = await client.getSingle("blog_home", ref ? { ref } : null) || {}
+  const doc = await client.getSingle("blog_home") || {}
 
   const posts = await client.query(
     Prismic.Predicates.at("document.type", "post"), {
       orderings: "[my.post.date desc]",
-      ...(ref ? { ref } : null)
     },
   )
 
@@ -51,7 +43,6 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
     props: {
       doc,
       posts: posts ? posts.results : [],
-      preview
     }
   }
 }

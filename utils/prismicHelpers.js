@@ -18,11 +18,6 @@ export const customLink = (type, element, content, children, index) => (
   </Link>
 )
 
-// Client method to query documents from the Prismic repo
-export const Client = (req = null) => (
-  Prismic.client(apiEndpoint, createClientOptions(req, accessToken))
-)
-
 const createClientOptions = (req = null, prismicAccessToken = null) => {
   const reqOption = req ? { req } : {}
   const accessTokenOption = prismicAccessToken ? { accessToken: prismicAccessToken } : {}
@@ -31,5 +26,10 @@ const createClientOptions = (req = null, prismicAccessToken = null) => {
     ...accessTokenOption,
   }
 }
+
+// Client method to query documents from the Prismic repo
+export const Client = (req = null) => (
+  Prismic.client(apiEndpoint, createClientOptions(req, accessToken))
+)
 
 export default Client
