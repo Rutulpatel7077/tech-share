@@ -11,7 +11,7 @@ import { hrefResolver, linkResolver } from 'prismic-configuration'
  */
 const PostItem = ({ post }) => {
   const title = RichText.asText(post.data.title) ? RichText.asText(post.data.title) : 'Untitled'
-  
+
   return (
     <div className="blog-post">
       <NextLink
@@ -24,7 +24,7 @@ const PostItem = ({ post }) => {
       </NextLink>
 
       <PostDate date={post.data.date} />
-      
+
       <FirstParagraph
         sliceZone={post.data.body}
         textLimit={300}

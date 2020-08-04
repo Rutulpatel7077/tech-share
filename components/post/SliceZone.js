@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Quote, ImageWithCaption } from './slices'
+import { Text, Quote, ImageWithCaption, Video } from './slices'
 
 /**
  * Post slice zone component
@@ -13,6 +13,10 @@ const SliceZone = ({ sliceZone }) => (
         return <Quote slice={slice} key={`slice-${index}`} />
       case ('text'):
         return <Text slice={slice} key={`slice-${index}`} />
+
+
+      // case ('youtube_video'):
+      //   return <Video slice={slice} key={`slice-${index}`} />
       default:
         return null
     }

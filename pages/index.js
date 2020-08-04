@@ -30,6 +30,7 @@ const Home = ({ doc, posts }) => {
 };
 
 export async function getStaticProps() {
+  // Prismic client
   const client = Client()
   const doc = await client.getSingle("blog_home") || {}
 

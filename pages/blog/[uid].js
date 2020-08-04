@@ -25,13 +25,19 @@ const Post = ({ post }) => {
         <Head>
           <title>{title}</title>
         </Head>
+
+        {/* Blog body */}
         <div className="main">
           <div className="outer-container">
             <BackButton />
             <h1>{title}</h1>
           </div>
+
+          {/* Render slices */}
           <SliceZone sliceZone={post.data.body} />
         </div>
+
+        {/* Next.js styles */}
         <style jsx global>
           {postStyles}
         </style>
@@ -53,6 +59,10 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const documents = await queryRepeatableDocuments((doc) => doc.type === 'post')
+
+  // example
+  // documents = [{ id: 1 }, { id: 2 }]
+  // then /blog/1, /blog/2 can be accessible from router
   return {
     paths: documents.map(doc => `/blog/${doc.uid}`),
     fallback: true,
